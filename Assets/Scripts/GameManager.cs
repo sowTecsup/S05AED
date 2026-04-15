@@ -6,9 +6,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-
-<<<<<<< Updated upstream
-=======
+    public static GameManager instance;
     public CustomDoubleLinkedList snapshotSystem = new();
 
     public EnemySpawner spawner;
@@ -24,9 +22,8 @@ public class GameManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        OnPassTurn += SaveTurn;
+       OnPassTurn += SaveTurn;
     }
->>>>>>> Stashed changes
 
     void Start()
     {
@@ -34,8 +31,12 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-<<<<<<< Updated upstream
-=======
+
+     /*   */
+    }
+
+    public void SaveTurn()
+    {
         snapshotSystem.SaveTurn();
         Debug.Log("Saving turn: " + snapshotSystem.Count);
     }
@@ -56,9 +57,8 @@ public class GameManager : MonoBehaviour
         snapshotSystem.MoveBackwards();
         LoadTurn();
     }
->>>>>>> Stashed changes
 
-    }
+    
   
 
 }

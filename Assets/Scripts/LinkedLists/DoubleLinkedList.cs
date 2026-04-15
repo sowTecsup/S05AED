@@ -29,7 +29,7 @@ public class DoubleLinkedList<T> //: MonoBehaviour
 
     
     //->O(1)
-    public void RemoveLast()
+    public virtual void RemoveLast()
     {
 
         //Node<T> Evaluator = head;
@@ -59,7 +59,7 @@ public class DoubleLinkedList<T> //: MonoBehaviour
 
     }
     //-> O(1)
-    public void RemoveFirst()
+    public virtual void RemoveFirst()
     {
 
         if (Count <= 1)
@@ -78,7 +78,7 @@ public class DoubleLinkedList<T> //: MonoBehaviour
 
     }
 
-    public void TraverseInOrder(Action<Node<T>> action)
+    public virtual void TraverseInOrder(Action<Node<T>> action)
     {
         Node<T> Evaluator = head;
         while (Evaluator != null)
@@ -89,7 +89,7 @@ public class DoubleLinkedList<T> //: MonoBehaviour
             Evaluator = Evaluator.Next;
         }
     }
-    public void TraverseInReverse(Action<Node<T>> action)
+    public virtual void TraverseInReverse(Action<Node<T>> action)
     {
         Node<T> Evaluator = tail;
         while (Evaluator != null)

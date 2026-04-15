@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         snapshotSystem.SaveTurn();
     }
-    [Button]
+    //[Button]
     public void LoadTurn()
     {
         snapshotSystem.LoadTurn(player);
@@ -36,11 +36,13 @@ public class GameManager : MonoBehaviour
     public void NextTurn()
     {
         snapshotSystem.MoveForward();
+        LoadTurn();
     }
     [Button]
     public void PrevTurn()
     {
         snapshotSystem.MoveBackwards();
+        LoadTurn();
     }
 
 

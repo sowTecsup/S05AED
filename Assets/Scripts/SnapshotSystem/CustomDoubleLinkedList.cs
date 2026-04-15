@@ -8,11 +8,22 @@ public class CustomDoubleLinkedList : DoubleLinkedList<SnapshotNode>
     public void SaveTurn()
     {
         //base.Add(value);
-        SnapshotNode snapshot = new SnapshotNode(GameManager.instance.player,Count);
 
-        base.Add(snapshot);
+        if(pointer == tail)
+        {
+            SnapshotNode snapshot = new SnapshotNode(GameManager.instance.player, Count);
+            base.Add(snapshot);
+            ResetPointer();
+        }
+        else
+        {
+            RemoveFromPosition(pointer);
+            SnapshotNode snapshot = new SnapshotNode(GameManager.instance.player, Count);
+            base.Add(snapshot);
+            ResetPointer();
+        }
 
-        ResetPointer();
+        
     }   
 
     public void ResetPointer()

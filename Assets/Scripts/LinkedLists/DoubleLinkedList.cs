@@ -1,5 +1,7 @@
+using Sirenix.OdinInspector.Editor.Validation;
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DoubleLinkedList<T> //: MonoBehaviour
 {
@@ -76,6 +78,37 @@ public class DoubleLinkedList<T> //: MonoBehaviour
         Count--;
 
 
+    }
+
+    public virtual void RemoveFromPosition(Node<T> position) 
+    {
+        if (position.Next == tail)
+        {
+            RemoveLast();
+            return;
+        }
+        if(position == head)
+        {
+            RemoveFirst();
+            return;
+        }
+        position.Next.SetPrev(null);
+        position.SetNext(null);
+        tail = position;
+
+        ReCount();
+
+    }
+
+    public void ReCount()
+    {
+        Count = 0;
+        Node<T> Evaluator = head;
+        while (Evaluator != null)
+        {
+            Count++;
+            Evaluator = Evaluator.Next;
+        }
     }
 
     public virtual void TraverseInOrder(Action<Node<T>> action)

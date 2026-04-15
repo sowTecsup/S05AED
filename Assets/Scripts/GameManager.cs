@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public void SaveTurn()
     {
         snapshotSystem.SaveTurn();
+        Debug.Log("Saving turn: " + snapshotSystem.Count);
     }
     //[Button]
     public void LoadTurn()

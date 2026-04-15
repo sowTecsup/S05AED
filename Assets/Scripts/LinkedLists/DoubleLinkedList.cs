@@ -77,7 +77,35 @@ public class DoubleLinkedList<T> //: MonoBehaviour
 
 
     }
+    public virtual void RemoveFromPosition(Node<T> position)
+    {
+        if (position.Next == tail)
+        {
+            RemoveLast();
+            return;
+        }
+        if (position == head)
+        {
+            RemoveFirst();
+            return;
+        }
+        position.Next.SetPrev(null);
+        position.SetNext(null);
+        tail = position;
 
+        ReCount();
+
+    }
+    public void ReCount()
+    {
+        Count = 0;
+        Node<T> Evaluator = head;
+        while (Evaluator != null)
+        {
+            Count++;
+            Evaluator = Evaluator.Next;
+        }
+    }
     public void TraverseInOrder(Action<Node<T>> action)
     {
         Node<T> Evaluator = head;

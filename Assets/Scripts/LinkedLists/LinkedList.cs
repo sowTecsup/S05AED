@@ -23,7 +23,7 @@ public class LinkedList<T> : MonoBehaviour
         {
             Node<T> Evaluator = head;
 
-            while(Evaluator.Next != null)
+            while (Evaluator.Next != null)
             {
                 Evaluator = Evaluator.Next;
             }
@@ -40,22 +40,22 @@ public class LinkedList<T> : MonoBehaviour
 
         Node<T> Evaluator = head;
 
-        if(Count == 0)
+        if (Count == 0)
         {
             Debug.Log("La lista esta vacia");
             return;
         }
-        else if(Count == 1)
+        else if (Count == 1)
         {
             head = null;
             Count--;
         }
-        else if(Count == 2)
+        else if (Count == 2)
         {
             head.SetNext(null);
             Count--;
         }
-        else if(Count > 2)
+        else if (Count > 2)
         {
             while (Evaluator != null)
             {
@@ -70,13 +70,13 @@ public class LinkedList<T> : MonoBehaviour
             Evaluator.SetNext(null);
             Count--;
         }
-        
+
     }
     //-> O(1)
     public void RemoveFirst()
     {
 
-        if(Count <= 1)
+        if (Count <= 1)
         {
             head = null;
             Count--;
@@ -91,6 +91,8 @@ public class LinkedList<T> : MonoBehaviour
 
     }
 
+
+    // Recorrer
     public void Traverse(Action<Node<T>> action)
     {
         Node<T> Evaluator = head;
@@ -99,8 +101,20 @@ public class LinkedList<T> : MonoBehaviour
             //  Debug.Log(Evaluator.Value);
             action(Evaluator);
 
-            Evaluator = Evaluator.Next; 
+            Evaluator = Evaluator.Next;
         }
+    }
+    public void RecursiveTraverse(Node<T> Evaluator  ,Action<Node<T>> action )
+    {
+        if (Evaluator == null)
+        {
+            Debug.Log("Terminas de recorrer la lista");
+            return;
+        }
+
+        action(Evaluator);
+
+        RecursiveTraverse(Evaluator.Next,action);
     }
 
 }
